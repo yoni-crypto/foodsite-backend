@@ -16,7 +16,13 @@ const port=4000
 
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ['https://foodsite-fr.vercel.app'], 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true, // Allow credentials (e.g., cookies)
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
+  }));
+// app.use(cors())
 
 // DB connection
 connectDB();
